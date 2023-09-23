@@ -13,68 +13,58 @@ namespace Calculator
 {
     internal class Program
     {
+        static double firstInpt = 0;
+        static double secondInpt = 0;
+        static double result = 0;
+        static string operation;
 
-        static double Plus(a, b){
-            return a + b
-        };
-        static double Minus(a, b){
-            return a - b
-        };
-        static double Multiply(a, b){
-            return a * b
-        };
-        static double Divide(a, b){
-            if(b != 0)
-                return a / b
-            else return null;
-        };
-        static double Power(a, b){
-            return a ^ b
-        };
-        static bool verifyNum(num){
-            if typeof(num) = double
-                return true;
-            else return false;
+        static double Plus(double firstInpt, double secondInpt){
+            return firstInpt + secondInpt;
+        }
+        static double Minus(double firstInpt, double secondInpt){
+            return firstInpt - secondInpt;
+        }
+        static double Multiply(double firstInpt,double secondInpt){
+            return firstInpt * secondInpt;
+        }
+        static double Divide(double firstInpt, double secondInpt){
+                return firstInpt / secondInpt;
+        }
+        static double Power(double firstInpt, double secondInpt){
+            return Math.Pow(firstInpt, secondInpt);
         }
 
         static void Main(string[] args)
     
         {
-            double a,b,result = 0;
-            string operation;
-            
+
             Console.WriteLine("a");
-            a = Convert.ToDouble(Console.ReadLine);
-            if(verifyNum(b)= false)
-                Console.WriteLine("Thats not a valid number");
-                break;
+            firstInpt = Convert.ToDouble(Console.ReadLine());
 
             Console.WriteLine("Type in the symbol for desired operation operation \n 1)a+b 2)a-b 3)a*b \n 4)a/b 5)a^b");
             operation = Console.ReadLine();
             
             Console.WriteLine("b");
-            b = Convert.ToDouble(Console.ReadLine);
-            if(verifyNum(b)= false)
-                Console.WriteLine("Thats not a valid number");
-                break;
+            secondInpt = Convert.ToDouble(Console.ReadLine());
+
 
 
             switch(operation){
                 case "+":
-                    result = Plus(a,b);
+                    result = Plus(firstInpt,secondInpt);
                     break;
                 case "-":
-                    result = Minus(a,b);
+                    result = Minus(firstInpt,secondInpt);
                     break;
                 case "*":
-                    result = Multiply(a,b);
+                    result = Multiply(firstInpt,secondInpt);
                     break;
                 case "/":
-                    result = Divide(a,b)
+                    result = Divide(firstInpt,secondInpt);
                     break;
                 
                 case "^":
-                    result = Power(a,b);
+                    result = Power(firstInpt,secondInpt);
                     break;
                 
                 default:
