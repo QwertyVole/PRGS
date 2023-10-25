@@ -48,7 +48,6 @@ namespace Calculator
             secondInpt = Convert.ToDouble(Console.ReadLine());
 
 
-
             switch(operation){
                 case "+":
                     result = Plus(firstInpt,secondInpt);
