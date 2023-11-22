@@ -37,8 +37,7 @@ namespace MatrixOperation
 
         static void MatrixPrint(int[,] Matrix)
         {
-            // Prints out the Matrix 
-            //TODO eliminate Console.Write afterwards
+            // Converts the Matrix to a string and Writes it to console
             string output = "";
             for (int i = 0; i < Matrix.GetLength(1); ++i)
             {
@@ -56,6 +55,8 @@ namespace MatrixOperation
 
         static int[,] MatrixElementSwap(int[,] Matrix, int x1, int y1, int x2, int y2)
         {
+            //swaps two elements based on the x and y coordinates
+            //coordinates start at 0
             int cache = Matrix[x1, y1];
             Matrix[x1, y1] = Matrix[x2, y2];
             Matrix[x2, y2] = cache;
@@ -65,37 +66,40 @@ namespace MatrixOperation
 
         static int[,] MatrixCollumSwap(int[,] Matrix, int first, int second)
         {
-
+            //swaps two collums
+            //labeling starts at 1
             int cache;
             for (int i = 0; i < Matrix.GetLength(1) - 1; ++i)
             {
-                cache = Matrix[first, i];
-                Matrix[first, i] = Matrix[second, i];
-                Matrix[second, i] = cache;
+                cache = Matrix[first -1, i];
+                Matrix[first-1, i] = Matrix[second-1, i];
+                Matrix[second-1, i] = cache;
             }
             return Matrix;
         }
 
         static int[,] MatrixLineSwap(int[,] Matrix, int first, int second)
         {
+            //Swaps two lines
+            //line labeling starts at 1
             int cache;
             for (int i = 0; i < Matrix.GetLength(1) - 1; ++i)
             {
-                cache = Matrix[i, first];
-                Matrix[i, first] = Matrix[i, second];
-                Matrix[i, second] = cache;
+                cache = Matrix[i, first-1];
+                Matrix[i, first -1] = Matrix[i, second-1];
+                Matrix[i, second-1] = cache;
             }
             return Matrix;
         }
 
         static int[,] MatrixSub(int[,] Matrix, int[,] MatrixRandom)
         {
-
+            //subtracts two arrays from each other
             for (int i = 0; i < Matrix.GetLength(1); ++i)
             {
                 for (int j = 0; j < Matrix.GetLength(0); ++j)
                 {
-                    Matrix[j, i] = Matrix[j, i] - MatrixRandom[j, i];
+                    Matrix[j, i] -= MatrixRandom[j, i];
                 }
             }
             return Matrix;
@@ -103,12 +107,12 @@ namespace MatrixOperation
 
         static int[,] MatrixAdd(int[,] Matrix, int[,] MatrixRandom)
         {
-
+            //adds a Randomly filled Matrix to a Matrix filled in ascending order
             for (int i = 0; i < Matrix.GetLength(1); ++i)
             {
                 for (int j = 0; j < Matrix.GetLength(0); ++j)
                 {
-                    Matrix[j, i] = Matrix[j, i] + MatrixRandom[j, i];
+                    Matrix[j, i] +=  MatrixRandom[j, i];
                 }
             }
             return Matrix;
@@ -116,7 +120,7 @@ namespace MatrixOperation
 
         static int[,] MatrixTransposition(int[,] Matrix)
         {
-            //TODO
+            //flips all elments across the main diagonal
             int[,] OutputMatrix = new int[Matrix.GetLength(1), Matrix.GetLength(0)];
 
             for (int i = 0; i < Matrix.GetLength(1); ++i)
@@ -133,7 +137,7 @@ namespace MatrixOperation
         {
             //https://cs.wikipedia.org/wiki/N%C3%A1soben%C3%AD_matic
             //with help from chatGPT
-            //Matrix1.x = Matrix2.y and vice versa
+            //Matrix1.x = Matrix2.y and vice versa = > dont need to verify thanks to how input is written
             //Should work TODO: Test and verify input
 
             int[,] OutputMatrix = new int[Matrix1.GetLength(1), Matrix2.GetLength(0)];
@@ -141,10 +145,13 @@ namespace MatrixOperation
 
             for (int i = 0; i < Matrix1.GetLength(1); i++)
             {
+                //changes the y coordinate of computed cell
                 for (int k = 0; k < Matrix2.GetLength(0); k++ ) 
                 {
+                    //changes the x coordinate of computed cell
                     for(int j = 0; j < Matrix1.GetLength(0); ++j )
                     {
+                        //computes a single cell of Output Matrix
                         cache += Matrix1[j, i] * Matrix2[k, j];
                     }
                     OutputMatrix[k, i] = cache;
@@ -159,16 +166,18 @@ namespace MatrixOperation
             //1. excercise
             Console.WriteLine("Choose the size of the aray");
             Console.WriteLine("-------------------------");
-            Console.WriteLine("a");
+            Console.WriteLine("Size along the x axis");
             int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("b");
+            Console.WriteLine("Size along the y axis");
             int b = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixFill(a, b));
             Console.WriteLine("-------------------------");
 
             //2. excercise
-            Console.WriteLine("Swap 2 elements");
+            Console.WriteLine("Swaps 2 elements of a Matrix filled in ascending order");
+            Console.WriteLine("x coordinates start at 0 and go up to" + a);
+            Console.WriteLine("y coordinates start at 0 and go up to" + b);
             Console.WriteLine("-------------------------");
             Console.WriteLine("x1");
             int x1 = Convert.ToInt32(Console.ReadLine());
@@ -182,7 +191,8 @@ namespace MatrixOperation
             MatrixPrint(MatrixElementSwap(MatrixFill(a, b), x1, y1, x2, y2));
             Console.WriteLine("-------------------------");
 
-            Console.WriteLine("Swap 2 columns");
+            Console.WriteLine("Swaps 2 columns of a Matrix filled in ascending order");
+            Console.WriteLine("numbering starts at 1 and goes up to" + a+1 );
             Console.WriteLine("-------------------------");
             Console.WriteLine("first column");
             int firstCol = Convert.ToInt32(Console.ReadLine());
@@ -192,7 +202,8 @@ namespace MatrixOperation
             MatrixPrint(MatrixCollumSwap(MatrixFill(a, b), firstCol, secondCol));
             Console.WriteLine("-------------------------");
 
-            Console.WriteLine("Swap 2 rows");
+            Console.WriteLine("Swaps 2 rows of a Matrix filled in ascending order");
+            Console.WriteLine("numbering starts at 1 and goes up to" +b+1 );
             Console.WriteLine("-------------------------");
             Console.WriteLine("first row");
             int firstRow = Convert.ToInt32(Console.ReadLine());
@@ -203,21 +214,22 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
             
             //4. excercise
-            Console.WriteLine("Subtracts a randomly filled Matrix");
+            Console.WriteLine("Subtracts a randomly filled Matrix from a Matrix filled in ascending order");
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixSub(MatrixFill(a, b),MatrixRandomFill(a,b)));
             Console.WriteLine("-------------------------");
 
-            Console.WriteLine("Adds a randomly filled Matrix to a Matrix in ascending order");
+            Console.WriteLine("Adds a randomly filled Matrix to a Matrix filled in ascending order");
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixAdd(MatrixFill(a, b), MatrixRandomFill(a, b)));
             Console.WriteLine("-------------------------");
             //5. excercise
             Console.WriteLine("Matrix transposition");
+            Console.WriteLine("Flips a Matrix filled in ascending order across the main diagonal");
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixTransposition(MatrixFill(a, b)));
             Console.WriteLine("-------------------------");
-            
+            //6.exercise
             Console.WriteLine("Matrix multiplication");
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixMultiplication(MatrixFill(a, b), MatrixRandomFill(b, a)));
