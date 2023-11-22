@@ -65,6 +65,7 @@ namespace MatrixOperation
 
         static int[,] MatrixCollumSwap(int[,] Matrix, int first, int second)
         {
+
             int cache;
             for (int i = 0; i < Matrix.GetLength(1) - 1; ++i)
             {
@@ -154,17 +155,21 @@ namespace MatrixOperation
         }
 
         static void Main(string[] args)
-        {/*
+        {
             //1. excercise
+            Console.WriteLine("Choose the size of the aray");
+            Console.WriteLine("-------------------------");
             Console.WriteLine("a");
             int a = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("b");
             int b = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixFill(a, b)));
+            MatrixPrint(MatrixFill(a, b));
             Console.WriteLine("-------------------------");
 
             //2. excercise
+            Console.WriteLine("Swap 2 elements");
+            Console.WriteLine("-------------------------");
             Console.WriteLine("x1");
             int x1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("y1");
@@ -173,9 +178,8 @@ namespace MatrixOperation
             int x2 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("y2");
             int y2 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Swap 2 elements");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixElementSwap(MatrixFill(a, b), x1, y1, x2, y2)));
+            MatrixPrint(MatrixElementSwap(MatrixFill(a, b), x1, y1, x2, y2));
             Console.WriteLine("-------------------------");
 
             Console.WriteLine("Swap 2 columns");
@@ -183,37 +187,42 @@ namespace MatrixOperation
             Console.WriteLine("first column");
             int firstCol = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("second column");
-            int secondCol = Convert.ToInt32(Console.ReadLine());
-            MatrixPrint(MatrixCollumSwap(MatrixFill(a, b), firstCol, secondCol)));
             Console.WriteLine("-------------------------");
-            
+            int secondCol = Convert.ToInt32(Console.ReadLine());
+            MatrixPrint(MatrixCollumSwap(MatrixFill(a, b), firstCol, secondCol));
+            Console.WriteLine("-------------------------");
+
+            Console.WriteLine("Swap 2 rows");
+            Console.WriteLine("-------------------------");
             Console.WriteLine("first row");
             int firstRow = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("second row");
             int secondRow = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Swap 2 rows");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixLineSwap(MatrixFill(a, b), firstRow, secondRow)));
+            MatrixPrint(MatrixLineSwap(MatrixFill(a, b), firstRow, secondRow));
             Console.WriteLine("-------------------------");
             
             //4. excercise
             Console.WriteLine("Subtracts a randomly filled Matrix");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixSub(MatrixFill(a, b),MatrixRandomFill(a,b))));
+            MatrixPrint(MatrixSub(MatrixFill(a, b),MatrixRandomFill(a,b)));
             Console.WriteLine("-------------------------");
 
-            Console.WriteLine("Adds a randomly filled Matrix");
+            Console.WriteLine("Adds a randomly filled Matrix to a Matrix in ascending order");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixAdd(MatrixFill(a, b), MatrixRandomFill(a, b))));
+            MatrixPrint(MatrixAdd(MatrixFill(a, b), MatrixRandomFill(a, b)));
             Console.WriteLine("-------------------------");
             //5. excercise
-            Console.WriteLine("-------------------------");
             Console.WriteLine("Matrix transposition");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixTransposition(MatrixFill(a, b))));
-            Console.WriteLine("-------------------------");*/
-
-            MatrixPrint(MatrixMultiplication(MatrixFill(3, 2), MatrixFill(2, 3)));
+            MatrixPrint(MatrixTransposition(MatrixFill(a, b)));
+            Console.WriteLine("-------------------------");
+            
+            Console.WriteLine("Matrix multiplication");
+            Console.WriteLine("-------------------------");
+            MatrixPrint(MatrixMultiplication(MatrixFill(a, b), MatrixRandomFill(b, a)));
+            Console.WriteLine("-------------------------");
+            
             Console.ReadKey();
         }
     }
