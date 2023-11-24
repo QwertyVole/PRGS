@@ -22,13 +22,14 @@ namespace MatrixOperation
 
         static int[,] MatrixRandomFill(int a, int b)
         {
-            //creates a matrix which's size is dictated by the input, and fills it with random integers from 0 to a * b -1
+            //creates a matrix which's size is dictated by the input, and fills it with random integers from -a*b -1  to a*b -1
             int[,] Matrix = new int[a, b];
+            Random rnd = new Random();
+
             for (int i = 0; i < Matrix.GetLength(1); ++i)
             {
                 for (int j = 0; j < Matrix.GetLength(0); ++j)
                 {
-                    Random rnd = new Random();
                     Matrix[j, i] = rnd.Next(-a * b, a * b - 1);
                 }
             }
@@ -43,7 +44,7 @@ namespace MatrixOperation
             {
                 for (int j = 0; j < Matrix.GetLength(0); ++j)
                 {
-                    if (Matrix[j, i] < 10)
+                    if (Matrix[j, i] < 10 && Matrix[j, i] > 0)
                         output += $"{Matrix[j, i]}  ";
                     else
                         output += $"{Matrix[j, i]} ";
@@ -173,11 +174,11 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixFill(a, b));
             Console.WriteLine("-------------------------");
-
+            /*
             //2. excercise
             Console.WriteLine("Swaps 2 elements of a Matrix filled in ascending order");
-            Console.WriteLine("x coordinates start at 0 and go up to" + a);
-            Console.WriteLine("y coordinates start at 0 and go up to" + b);
+            Console.WriteLine("x coordinates start at 0 and go up to " + (a-1));
+            Console.WriteLine("y coordinates start at 0 and go up to " + (b-1));
             Console.WriteLine("-------------------------");
             Console.WriteLine("x1");
             int x1 = Convert.ToInt32(Console.ReadLine());
@@ -192,18 +193,18 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
 
             Console.WriteLine("Swaps 2 columns of a Matrix filled in ascending order");
-            Console.WriteLine("numbering starts at 1 and goes up to" + a);
+            Console.WriteLine("numbering starts at 1 and goes up to " + a);
             Console.WriteLine("-------------------------");
             Console.WriteLine("first column");
             int firstCol = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("second column");
+            Console.WriteLine("second column ");
+            int secondCol = Convert.ToInt32(Console.ReadLine());            
             Console.WriteLine("-------------------------");
-            int secondCol = Convert.ToInt32(Console.ReadLine());
             MatrixPrint(MatrixCollumSwap(MatrixFill(a, b), firstCol, secondCol));
             Console.WriteLine("-------------------------");
 
-            Console.WriteLine("Swaps 2 rows of a Matrix filled in ascending order");
-            Console.WriteLine("numbering starts at 1 and goes up to" + b);
+            Console.WriteLine("Swaps 2 rows of a Matrix filled in ascending order ");
+            Console.WriteLine("numbering starts at 1 and goes up to " + b);
             Console.WriteLine("-------------------------");
             Console.WriteLine("first row");
             int firstRow = Convert.ToInt32(Console.ReadLine());
@@ -212,7 +213,7 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixLineSwap(MatrixFill(a, b), firstRow, secondRow));
             Console.WriteLine("-------------------------");
-
+            */
             //4. excercise
             Console.WriteLine("Subtracts a randomly filled Matrix from a Matrix filled in ascending order");
             Console.WriteLine("-------------------------");
