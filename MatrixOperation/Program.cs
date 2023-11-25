@@ -174,7 +174,7 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixFill(a, b));
             Console.WriteLine("-------------------------");
-            /*
+            
             //2. excercise
             Console.WriteLine("Swaps 2 elements of a Matrix filled in ascending order");
             Console.WriteLine("x coordinates start at 0 and go up to " + (a-1));
@@ -213,7 +213,7 @@ namespace MatrixOperation
             Console.WriteLine("-------------------------");
             MatrixPrint(MatrixLineSwap(MatrixFill(a, b), firstRow, secondRow));
             Console.WriteLine("-------------------------");
-            */
+            
             //4. excercise
             Console.WriteLine("Subtracts a randomly filled Matrix from a Matrix filled in ascending order");
             Console.WriteLine("-------------------------");
@@ -236,9 +236,19 @@ namespace MatrixOperation
             MatrixPrint(MatrixTransposition(MatrixFill(a, b)));
             Console.WriteLine("-------------------------");
             //6.exercise
-            Console.WriteLine("Multiplies a Matrix filled in ascending order with randomly filled array from previous task");
+            Console.WriteLine("Multiplies a Matrix filled in ascending order with new randomly filled array");
+            Console.WriteLine("First Matrix");
             Console.WriteLine("-------------------------");
-            MatrixPrint(MatrixMultiplication(MatrixFill(a, b),RndMatrix));
+            MatrixPrint(MatrixFill(a, b));
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("Random Matrix");
+            Console.WriteLine("-------------------------");
+            int[,] RndMatrix2 = MatrixRandomFill(b, a);
+            MatrixPrint(RndMatrix2);
+            Console.WriteLine("-------------------------");
+            Console.WriteLine("Product is");
+            Console.WriteLine("-------------------------");
+            MatrixPrint(MatrixMultiplication(MatrixFill(a, b),RndMatrix2 ));
             Console.WriteLine("-------------------------");
             
             Console.ReadKey();
