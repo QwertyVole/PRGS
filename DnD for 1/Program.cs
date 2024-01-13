@@ -27,6 +27,7 @@ namespace DnD_for_1
             UseStory.FirstQuest();
             Use.Combat(Player1, 1, 10, "goblin");
             UseStory.SecondQuest();
+            Use.Combat(Player1, 4, 5, "big goblin");
             Console.ReadKey();
     }
 }

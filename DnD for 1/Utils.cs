@@ -36,8 +36,10 @@ namespace DnD_for_1
                     Console.WriteLine($"{element}");
                 }
                 Console.WriteLine("-------------------------------------");
-
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 string input = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Green;
+
                 int output = Array.IndexOf(options, input);
                 if (output == -1)
                 {
@@ -56,8 +58,7 @@ namespace DnD_for_1
         {
             //Player input for combat
             DMSpeak("It is your turn what do you do?");
-            DMSpeak($"Attack \n Go closer \n get further away");
-            string[] options = { "Attack", "Closer", "Away" };
+            string[] options = { "Attack", "Closer", "Away", "Heal" };
             int option = ReadInput(options);
             switch (option)
             {
@@ -81,6 +82,7 @@ namespace DnD_for_1
 
 
                             enemy.hp = enemy.hp - (player.dmg * multiplier);
+                            DMSpeak($"You did {player.dmg * multiplier}dmg ");
                         }
                         else
                         {
@@ -90,12 +92,24 @@ namespace DnD_for_1
                     }
                 case 1:
                     {
+                        
                         enemy.distance -= 10;
+                        DMSpeak("You moved 10 meters closer to the enemy");
                         break;
                     }
                 case 2:
                     {
                         enemy.distance += 10;
+                        DMSpeak("You moved 10 meters away from the enemy");
+                        break;
+                    }
+                case 3:
+                    {
+                        player.hp += 10;
+                        if (player.hp > player.maxhp)
+                            player.hp = player.maxhp;
+                        DMSpeak($"You healed yourself and now you have {player.hp}hp");
+
                         break;
                     }
                 default:
